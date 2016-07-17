@@ -13,8 +13,8 @@
     tools:context="com.github.tkctd.kindlefiler.MainActivity"
     tools:showIn="@layout/app_bar_main">
 
-    <TextView
+    <ListView
+        android:id="@+id/booklist"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"/>
+        android:layout_height="wrap_content"/>
 </RelativeLayout>
