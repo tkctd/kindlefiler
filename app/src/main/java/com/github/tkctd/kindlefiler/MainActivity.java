@@ -1,5 +1,7 @@
 package com.github.tkctd.kindlefiler;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -48,14 +50,21 @@ public class MainActivity extends AppCompatActivity
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 ListView listView = (ListView) parent;
                 String item = (String) listView.getItemAtPosition(position);
-                showItem(item);
+                readBook(item);
             }
         });
 
     }
 
-    public void showItem(String str) {
-        Toast.makeText(this, "Open: " + str, Toast.LENGTH_SHORT).show();
+    public void readBook(String asin) {
+        Log.d("LOG", "Open " + asin);
+
+        Intent readbook = new Intent(Intent.ACTION_VIEW);
+        readbook.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+        Uri file = Uri.parse("kindle://book/?action=open&book_id=AMZNID0/" + asin + "/0/");
+        readbook.setData(file);
+        startActivity(readbook);
     }
 
     @Override
